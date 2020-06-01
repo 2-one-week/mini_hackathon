@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
+    user-scalable=no" />
+    <title>Document</title>
+    {% load socialaccount %}
+    {% providers_media_js %}
+    
+</head>
+<body>
+    {% if error %}
+    <script type="text/javascript">
+            alert('{{error}}')
+    </script>
+    {% endif %}
+   
+    
+    <form method="POST">
+        {% csrf_token %}
+        <input type="id"  name="id" placeholder="아이디"><span>@korea.ac.kr</span>
+        <input type="password"  name="password" placeholder="비밀번호">
+        <button type="submit">로그인 하기</button>
+    </form>
+</body>
+</html>

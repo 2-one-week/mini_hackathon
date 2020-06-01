@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
+    user-scalable=no" />
+    <title>Nickname & Locations</title>
+    {% load static %}
+    <script src="{% static 'location.js'  %}"></script>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="nickname" placeholder="사용할 닉네임을 적어주세요" required>
+        <input type="text" name="location" id="myLocationInfo" readonly>
+        <input type="hidden" name="real_location" id="mylocHidden">
+        <button type="제출">N빵 시작하기</button>
+    </form>
+    <script>
+        var a = document.getElementById("myLocationInfo");
+        var b = document.getElementById("mylocHidden");
+        whereami(a, b);
+    </script>
+</body>
+</html>
