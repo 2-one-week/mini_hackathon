@@ -138,7 +138,7 @@ LOGIN_REDIRECT_URL = '/'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(os.path.join(BASE_DIR, './config/index.json')) as f:
+with open(os.path.join(BASE_DIR, './Nbbang/config/index.json')) as f:
     secrets = json.loads(f.read())
 
 

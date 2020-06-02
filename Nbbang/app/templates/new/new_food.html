@@ -1,0 +1,17 @@
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="제목" required>
+    <select name="location" required>
+        <option value="">장소</option>
+        <option value="정후">정후</option>
+        <option value="안암역">안암역</option>
+        <option value="법후">법후</option>
+    </select>
+    <input type="date" name="deadline1" data-date-format="MM DD" pattern="([1]?[0-9]|2[0-3]):[0-5][0-9]"/>
+    <input type="time" name="deadline2" pattern="([1]?[0-9]|2[0-3]):[0-5][0-9]"/>
+    <input type="text" name="applink" placeholder="앱 링크 (ex. 배민, 요기요)" required>
+    <input type="text" name="left" placeholder="남은 금액" required>
+    <input type="text" name="kakaoLink" placeholder="오픈카톡방 링크" required>
+    <input type="text" name="left" placeholder="배달팁" required>
+    <input type="text" name="memo" placeholder="메모">
+</form>

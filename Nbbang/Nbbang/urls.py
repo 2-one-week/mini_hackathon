@@ -18,7 +18,9 @@ from django.urls import path, include
 from app import views
 
 urlpatterns = [
+    # admin page
     path('admin/', admin.site.urls),
+    
     # 로그인 및 닉네임, 인증 토큰
     path('', views.start, name='start'),
     path('signup', views.signup, name='signup'),
@@ -27,6 +29,17 @@ urlpatterns = [
     path('activate/<str:uidb64>/<str:token>/', views.activate, name="activate"),
     path('nickname/<int:user_pk>', views.nickname, name='nickname'),
     
-    
+    # home
     path('index', views.index, name='index'),
+    
+    # new
+    path('new/category', views.new_category, name='new_category'),
+    path('new/food', views.new_food, name='new_food'),
+    path('new/franchise', views.new_franchies, name='new_franchies'),
+    path('new/ott', views.new_ott, name='new_ott'),
+    path('new/shopping', views.new_shopping, name='new_shopping'),
+    path('new/others', views.new_others, name='new_others'),
+    
+    # edit & delete
+    
 ]
