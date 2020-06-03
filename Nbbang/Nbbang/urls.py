@@ -30,7 +30,7 @@ urlpatterns = [
     path('nickname/<int:user_pk>', views.nickname, name='nickname'),
     
     # home
-    path('index', views.index, name='index'),
+    path('index/<str:profile>', views.index, name='index'),
     
     # new
     path('new/category', views.new_category, name='new_category'),

@@ -37,16 +37,17 @@ def signup(request):
 # 인증 성공 시 닉네임 + 위치 받아오기
 def nickname(request, user_pk):
     if request.method == 'POST':
-        nick_location(request,user_pk)
-        return redirect('index')
+        new_profile = nick_location(request,user_pk)
+        return redirect('index', new_profile)
     return render(request, 'registration/nickname.html')
 
 def login(request):
     if request.method == 'POST':
         user = login_check(request)
         if user is not None:
+            profile = Profile.objects.filter(username = user)
             auth.login(request, user)
-            return redirect('index')
+            return redirect('index', profile[0])
         else:
             return render(request, 'registration/login.html', {'error': '아이디 혹은 비밀번호 틀림'})
     else:
@@ -63,8 +64,9 @@ def activate(request, uidb64, token):
 # -----------------------로그인 기능---------------------
 
 # 홈화면
-def index(request):
-    return render(request, 'index.html')
+def index(request, profile):
+    foods = food.objects.all()
+    return render(request, 'index.html', { 'profile':profile, 'foods' : foods} )
 
 
 # -----------------------new--------------------------
@@ -72,13 +74,20 @@ def new_category(request):
     return render(request, 'new/category.html')
 
 def new_food(request):
+    if request.method == "POST":
+        
+        return redirect('index')
     return render(request, 'new/new_food.html')
+
 def new_franchies(request):
     return render(request, 'new/new_franchise.html')
+
 def new_ott(request):
     return render(request, 'new/new_ott.html')
+
 def new_shopping(request):
     return render(request, 'new/new_shopping.html')
+
 def new_others(request):
     return render(request, 'new/new_others.html')
 

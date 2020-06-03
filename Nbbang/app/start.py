@@ -35,13 +35,15 @@ def send_email(request):
 def nick_location(request,user_pk):
     user = User.objects.get(pk = user_pk)
     new_profile = Profile(
-        user = user,
+        username = user,
         nickname = request.POST['nickname'],
         location = request.POST['location'],
         hidden_loc = request.POST['real_location'],
-        trust = 0
+        trust = 0,
+        money = 0
     )
     new_profile.save()
+    return new_profile
     
 def login_check(request):
     username = request.POST['id']
