@@ -31,7 +31,7 @@
     <div class="middle">
         {% if user.is_authenticated %}
         <div>
-            <h2>안녕 {{profile}} 님</h2>
+            <h2>안녕 {{user.profile.nickname}} 님</h2>
         </div>
         {% endif %}
     </div>
