@@ -33,7 +33,7 @@ def signup(request):
 def nickname(request, user_pk):
     if request.method == 'POST':
         # 인증 성공 시 닉네임 + 위치 받아오기
-        new_profile = nick_location(request,user_pk)
+        nick_location(request,user_pk)
         return redirect('index')
     return render(request, 'registration/nickname.html')
 

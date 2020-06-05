@@ -34,16 +34,23 @@ def send_email(request):
 
 def nick_location(request,user_pk):
     user = User.objects.get(pk = user_pk)
-    new_profile = Profile(
-        username = user,
-        nickname = request.POST['nickname'],
-        location = request.POST['location'],
-        hidden_loc = request.POST['real_location'],
-        trust = 0,
-        money = 0
-    )
-    new_profile.save()
-    return new_profile
+    found_profile = Profile.objects.filter(nickname = request.POST['nickname'])
+    if found_profile is None:
+        new_profile = Profile(
+            username = user,
+            nickname = request.POST['nickname'],
+            location = request.POST['location'],
+            hidden_loc = request.POST['real_location'],
+            trust = 0,
+            money = 0
+        )
+        new_profile.save()
+        return new_profile
+    else:
+        error = '해당 닉네임은 이미 존재 다른거 쓰셈'
+        return render(request, 'registration/nickname.html', {'error':error})
+    
+    return 
     
 def login_check(request):
     username = request.POST['id']
