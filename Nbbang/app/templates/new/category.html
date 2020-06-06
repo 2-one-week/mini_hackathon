@@ -1,14 +1,49 @@
-<button>
-    <a href="{% url 'new_food' %}" > 배달 음식 </a>
-</button>
-<button>
-    <a href="{% url 'new_franchies' %}" > 프렌차이즈 </a>
-</button>
-<button>
-    <a href="{% url 'new_ott' %}" >OTT 서비스</a>
-</button><button>
-    <a href="{% url 'new_shopping' %}" >쇼핑</a>
-</button>
-<button>
-    <a href="{% url 'new_others' %}" > 기타 </a>
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'new-category.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
+    user-scalable=no" />
+    <title>new-start</title>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'index' %}">
+            <div class="exit">
+                <span class="material-icons"> close </span>
+            </div>
+        </a>
+       
+        <div class="address">
+            <h1>카테고리를 골라주세요</h1>
+            <div class="category">
+                <div class="boxline">
+                    <a href="{% url 'new_food' %}" style="text-decoration: none;" >
+                        <div class="box"><p>배달음식</p></div>
+                    </a>
+                    <a href="{% url 'new_shopping' %}" style="text-decoration: none;">
+                        <div class="box"><p>인터넷쇼핑</p></div>
+                    </a>
+                </div>
+                <div class="boxline">
+                    <a href="{% url 'new_franchies' %}" style="text-decoration: none;">
+                        <div class="box"><p>프렌차이즈<br>할인행사</p></div>
+                    </a>
+                    <a href="{% url 'new_ott' %}" style="text-decoration: none;"><div class="box"><p>OTT<br>서비스</p></div></a>
+                    
+                </div>
+                <div class="boxline">
+                    <a href="{% url 'new_others' %}"  style="text-decoration: none;">
+                        <div class="box"><p>기타</p></div>
+                    </a>
+                    <div class="box-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

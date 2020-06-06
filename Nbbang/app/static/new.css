@@ -1,0 +1,182 @@
+html{
+    margin: 0px;
+    background-color: #FFF3E8;
+}
+
+body{
+    margin:0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    margin: 20px;
+    width: 375px;
+}
+
+
+.exit{
+    margin-left: 20px;
+    color: #ac5910;
+    font-weight: bold;
+}
+
+h1{
+    font-family: KoPubWorldDotum;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    color: #502600;
+    margin-top: 53px;
+}
+
+
+h2{
+    font-family: KoPubWorldDotum;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: #502600;
+}
+
+.input-form{
+    margin-left: 20px; 
+}
+
+input{
+    width: 315px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    font-size: 18px;
+    font-family: KoPubWorldDotum;
+}
+
+input::placeholder{
+    color:
+    font-size: 18px;
+    font-family: KoPubWorldDotum;
+}
+
+button{
+    width: 143px;
+    height: 50px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffae66;
+    border-style: none;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    font-family: KoPubWorldDotum;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.low-price{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 294px;
+    height: 50px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #F0F0F0;
+    border-style: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-family: KoPubWorldDotum;
+    font-size: 20px;
+}
+
+.locations{
+    width: 337px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    font-family: KoPubWorldDotum;
+}
+
+.monthandday{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 335px;
+}
+
+.month-div{
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.month-div h1{
+    font-size: 20px;
+    margin: 0px;
+}
+.month{
+    width: 80%;
+    height: 50px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    font-family: KoPubWorldDotum;
+}
+
+.day-div{
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+    justify-content: space-between;
+    align-items: center;
+}
+.day-div h1{
+    font-size: 20px;
+    margin: 0px;
+}
+.day{
+    width: 80%;
+    height: 50px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    font-family: KoPubWorldDotum;
+}
+
+.shop{
+    width: 337px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+    font-family: KoPubWorldDotum;
+}

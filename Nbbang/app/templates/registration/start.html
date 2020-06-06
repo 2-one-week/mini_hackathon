@@ -1,2 +1,24 @@
-<button><a href="{% url 'signup' %}">가입하기</a></button>
-<button><a href="{% url 'login' %}">로그인하기</a></button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
+    user-scalable=no" />
+    <title>용돈 부족해? N빵해~</title>
+    {% load static %}
+    <link href="{% static 'start.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="start_1">
+        <div id="logo1"> 세상에 없던 빵이 온다! </div>
+        <img src="{% static 'logo.png' %}" alt="logo">
+    </div>
+    
+    <div id="start_2">
+        <a href="{% url 'signup' %}"><button id="button_korea"><img id="korealogo" src="{% static 'korealogo.png' %}" > <span>고려대 계정으로 가입하기</span></button></a>
+        <a href="{% url 'login' %}"><button id="button_login">LOG IN</button></a>
+    </div>
+    
+    <div id="start_3">2020 한주 소영 단비</div>
+</body>
+</html>

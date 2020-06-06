@@ -1,0 +1,74 @@
+html{
+    margin: 0px;
+    background-color: #FFF3E8;
+}
+
+body{
+    margin:0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a:link { 
+    color: black;
+    text-decoration: none;
+}
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.container{
+    margin: 20px;
+    width: 375px;
+}
+
+.material-icons{
+    font-size: 20px;
+}
+
+.exit{
+    margin-left: 20px;
+    color: #ac5910;
+    font-weight: bold;
+}
+
+h1{
+    font-family: KoPubWorldDotum;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    color: #502600;
+    margin-left: 20px;
+}
+
+
+
+.category{
+    font-family: KoPubWorldDotum;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.boxline{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 11px;
+}
+
+.box{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFC591;
+    width: 162px;
+    height: 86px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}

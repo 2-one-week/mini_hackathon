@@ -7,14 +7,25 @@
     <title>Nickname & Locations</title>
     {% load static %}
     <script src="{% static 'location.js'  %}"></script>
+    <link href="{% static 'nickname.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <form method="POST">
         {% csrf_token %}
-        <input type="text" name="nickname" placeholder="사용할 닉네임을 적어주세요" required>
-        <input type="text" name="location" id="myLocationInfo" readonly>
-        <input type="hidden" name="real_location" id="mylocHidden">
-        <button type="제출">N빵 시작하기</button>
+        <div class="nickname_1">
+            <div id="nickname">
+                <p>닉네임 설정하기</p>
+                <input type="text" name="nickname" placeholder="닉네임" required>
+            </div>
+            <div id="nickname">
+                <p>내 위치</p>
+                <input type="text" name="location" id="myLocationInfo" placeholder="위치 설정 중.. 잠시만 기다려 주세요" readonly>
+            </div>
+                <input type="hidden" name="real_location" id="mylocHidden">
+        </div>
+        <div class="nickname_2">
+            <button type="submit">N빵 시작하기</button>
+        </div>
     </form>
     <script>
         var a = document.getElementById("myLocationInfo");

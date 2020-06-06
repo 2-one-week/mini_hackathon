@@ -1,9 +1,45 @@
-{% autoescape off %}
-{{user.username}}님, 아래 링크를 클릭하여 계정을 활성화하세요:
-<button>
-    <a href="{{domain}}{% url 'activate' uid token %}">
-        회원 가입 버튼
-    </a>
-</button>
-
-{% endautoescape %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'activation-email.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <style>
+        wimg{
+            width: 100%;
+            height: 100%;
+        }
+        
+        .activation-email{
+            position: relative;
+        }
+        
+        button{
+            position: absolute;
+            width: 60%;
+            height: 5%;
+            background-color: #ff7800;
+            border-style: none;
+            border-radius: 20px;
+            top: 70%;
+            right: 20%;
+        }
+        
+        a{
+            color: white;
+            font-family: KoPubWorldDotum;
+        }
+    </style>
+    <div class="activation-email">
+        <img src="https://postfiles.pstatic.net/MjAyMDA2MDZfMjE3/MDAxNTkxNDQ4NjAyMzM2.VXsdbEUoSdYhc2D9JhU9N7D5cqmjnW5OjVDlT2f2Po0g.nmbP1jahB3D-yfkXLmlPbMnjAr5JOIO6_xWRtMFFQJYg.PNG.tojay24/%EC%9D%B8%EC%A6%9D%EB%A9%94%EC%9D%BC_1.png?type=w966">
+        <a href="{{domain}}{% url 'activate' uid token %}">
+        <img src="https://postfiles.pstatic.net/MjAyMDA2MDZfNjAg/MDAxNTkxNDQ4NjAyMzE5.sJIsfWTsSQK502ahi60ZIgKzSXlVAKpZDHXxOAmSrTEg.l1IholeB645MwJ4eTEPXje7cvoNyG1rB8qHdbcHrjHUg.PNG.tojay24/%EC%9D%B8%EC%A6%9D%EB%A9%94%EC%9D%BC_2.png?type=w966">
+        </a> 
+        <img src="https://postfiles.pstatic.net/MjAyMDA2MDZfMTE5/MDAxNTkxNDQ4NjAyMzI5.wqBkdYgu2b0xKLCKdHdJDT_zHV7KJX4SOOt8kN3igiog.O3M8AqL4rhXDfdApnjTiyapkZtE0JNcNwo-YMg174YAg.PNG.tojay24/%EC%9D%B8%EC%A6%9D%EB%A9%94%EC%9D%BC_3.png?type=w966">
+    </div>
+</body>

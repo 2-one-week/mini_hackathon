@@ -1,46 +1,133 @@
-{% extends 'base.html' %} 
-{% block css %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
+    user-scalable=no" />
+    <title>HOME</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-1">
+                <div class="alam">
+                    <span class="material-icons"> notifications </span>
+                </div>
+                <div class="location">
+                    내 위치: {{user.profile.location}}
+                    <span></span>
+                </div>
+                <a href="{% url 'myhome' %}">
+                    <div class="myhome">
+                        <span class="material-icons"> person </span>
+                    </div>
+                </a>
+               
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="category">
+                <div class="category-top">
+                    <div class="title">카테고리</div>
+                </div>
+                    <div class="category-main">
+                    <div class="category-content">배달음식</div>
+                    <div class="category-content">OTT</div>
+                    <div class="category-content">할인행사</div>
+                    <div class="category-content">인터넷쇼핑</div>
+                    <div class="category-content">기타</div>
+                </div>
+            </div>
+            <div class="locate-recognition">
+                <div class="locate-recognition-top">
+                    <div class="title">지금 <span>{{user.profile.location}}</span> 근처 에서는...</div>
+                </div>
+                <div class="locate-recognition-main">
+                    <table>
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>배달음식</p>
+                            </td>
+                            <td class="thumbnail-bar-title"><p>신전떡볶이 팟 구해요~</p></td>
+                            <td class="thumbnail-bar-deadline">~13:00</td>
+                        </tr>
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>할인행사</p>
+                            </td>
+                            <td class="thumbnail-bar-title">정문GS 4캔 만원</td>
+                            <td class="thumbnail-bar-deadline">~24:00</td>
+                        </tr>
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>배달음식</p>
+                            </td>
+                            <td class="thumbnail-bar-title">신전떡볶이 팟 구해요~</td>
+                            <td class="thumbnail-bar-deadline">~13:00</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="all">
+                <div class="all-top">
+                    <div class="title">전체 N빵</div>
+                    <div class="seemore">
+                        <p>더보기</p>
+                    </div>
+                </div>
+                <div class="all-main">
+                    <table>
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>배달음식</p>
+                            </td>
+                            <td class="thumbnail-bar-title"><p>신전떡볶이 팟 구해요~</p></td>
+                            <td class="thumbnail-bar-deadline">~13:00</td>
+                        </tr>
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>할인행사</p>
+                            </td>
+                            <td class="thumbnail-bar-title">정문GS 4캔 만원</td>
+                            <td class="thumbnail-bar-deadline">~24:00</td>
+                        </tr>
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>배달음식</p>
+                            </td>
+                            <td class="thumbnail-bar-title">신전떡볶이 팟 구해요~</td>
+                            <td class="thumbnail-bar-deadline">~13:00</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
 
 
-{% endblock %}
+        <div class="footer">
+            <div class="footer-flex2">
+                <a href="{% url 'index' %}">
+                    <div class="retry">
+                        <span class="material-icons"> cached </span>
+                    </div>
+                </a>
+            </div>
+            <div class="footer-flex">
+              <a href="{% url 'new_category' %}">
+                <div class="plus">
+                    <span class="material-icons">add</span>
+                </div>
+              </a>
+            </div>
 
-{% block content %}
-<!-- Modal -->
-<div class="modal fade" id="1" role="dialog"> 
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4 class="modal-title">모달 창 타이틀</h4> 
-          <!-- 사용자 지정 부분② : 타이틀 -->
         </div>
-        <div class="modal-body">
-          <div>
-            <button><a href="https://open.kakao.com/o/sz4h2Mec"> 오카방으로 </a></button>
-          </div>
-          <p>여기에 필요한 텍스트 메시지 넣기</p> 
-          <!-- 사용자 지정 부분③ : 텍스트 메시지 -->
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
-</div>
-<div>
-  <button type="button" data-toggle="modal" data-target="#1">모달 창 열기2</button>
-</div>
-
-<div>
-  <button>
-    <a href="{% url 'new_category' %}">
-      +
-    </a>
-  </button>
-</div>
-
-
-{% endblock content%}
+</body>
+</html>

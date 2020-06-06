@@ -1,0 +1,116 @@
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 812px;
+    background-color: #ff9333;
+    align-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+}
+
+#logo1 {
+    display: flex;
+    font-family: KoPubWorldDotum;
+    font-size: 15px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+    text-align: left;
+    color: #502600;
+    margin-bottom: 21px;
+}
+
+#start_1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 536px;
+    box-sizing: border-box;
+}
+
+#start_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 155px;
+    box-sizing: border-box;
+}
+
+#start_3 {
+    display: flex;
+    width: 100%;
+    font-family: KoPubWorldDotum;
+    font-size: 10px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: center;
+    color: #502600;
+    justify-content: center;
+    align-items: center;
+    margin-top: 79px;
+    margin-bottom: 27px;
+}
+
+img {
+    width: 130px;
+    height: 126px;
+    object-fit: contain;
+}
+
+#button_korea {
+    width: 291px;
+    height: 71px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #910023;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style:none;
+}
+
+#button_login {
+    width: 291px;
+    height: 71px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    margin-top: 10px;
+    border-style:none;
+}
+
+#korealogo {
+    display: flex;
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+span {
+    display: flex;
+    width: 188px;
+    height: 22px;
+    font-family: KoPubWorldDotum;
+    font-size: 15px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+}
+

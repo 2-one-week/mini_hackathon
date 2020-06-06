@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모든 프랜차이즈 할인 행사 팟</title>
+    {% load static %}
+    <link href="{% static 'category-base.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="header-icon">
+            <a href="{% url 'index' %}">
+            <span class="material-icons">
+            keyboard_backspace
+            </span>
+        </a>
+        </div>
+        <div id="header-title">{{category.title}}</div>
+        <div id="header-empty"> </div>
+    </header>
+    <main>
+        <div class="select-box">
+        <img id="select-more" src="more.PNG">
+        <select class="select-location">
+            <option selected>위치별로 정렬</option>
+            <option>정후</option>
+            <option>정후</option>
+            <option>정후</option>
+            <option>정후</option>
+        </select>
+        </div>
+        <div class="post-table">
+        {% for franchise in franchises %}
+            <table>
+                <tr id="tr-1"> 
+                    <td>{{franchise.location}}</td>
+                </tr>
+                <tr id="tr-2"> 
+                    <td>{{franchise.title}}</td>
+                </tr>
+                <tr id="tr-3"> 
+                    <td id="td-time">{{franchise.deadline2}}</td>
+                    <td id="td-deadline"> <strong>마감</strong>{{franchise.deadline1}}</td>
+                </tr>
+            </table>
+        {% endfor %}
+    </div>
+    </main>
+</body>
+</html>

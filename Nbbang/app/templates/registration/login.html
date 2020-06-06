@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
     user-scalable=no" />
-    <title>Document</title>
+    <title>Login</title>
     {% load socialaccount %}
     {% providers_media_js %}
-    
+    {% load static %}
+    <link href="{% static 'login.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
     {% if error %}
@@ -15,13 +16,21 @@
             alert('{{error}}')
     </script>
     {% endif %}
-   
-    
-    <form method="POST">
+    <form class="login" method="POST">
         {% csrf_token %}
-        <input type="id"  name="id" placeholder="아이디"><span>@korea.ac.kr</span>
+        <div id="signup_items">
+            <div id="ID">ID</div>
+            <span><input id="id" type="id"  name="id" placeholder="아이디"><p id="korea">@korea.ac.kr</p></span>
+        <div>
+        <div id="signup_items">
+            <div id="PASSWORD">PASSWORD</div>            
         <input type="password"  name="password" placeholder="비밀번호">
-        <button type="submit">로그인 하기</button>
+        </div>
+
+        <button type="submit"><p>LOG IN</p></button>
+
     </form>
+
 </body>
+
 </html>

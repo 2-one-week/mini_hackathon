@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
+    user-scalable=no" />
+    <title>new-OTT</title>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'new_category' %}">
+            <div class="exit">
+                <span class="material-icons">arrow_back</span>
+            </div>
+        </a>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-form">
+                <h1>OTT</h1>
+                <input type="text" name="title" placeholder="제목" required>
+                <select name="OTT-service" class="locations">
+                    <option value="netflix">넷플릭스</option>
+                    <option value="watcha">왓챠플레이</option>
+                    <option value="wavve">웨이브</option>
+                    <option value="tiving">티빙</option>
+                </select>
+                <input type="number" placeholder="남은 인원(명)" name="people">
+                <input type="text" name="kakaoLink" placeholder="오픈카톡방 링크" required>
+                <input type="text" name="memo" placeholder="메모(선택)">
+            </div>
+            <button type="submit">게시하기</button>
+        </form>
+    </div>
+</body>

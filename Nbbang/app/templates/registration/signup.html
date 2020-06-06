@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
     user-scalable=no" />
-    <title>Document</title>
+    <title>N빵 가입하기</title>
     {% load socialaccount %}
     {% providers_media_js %}
     <style>
@@ -19,14 +19,14 @@
          background-color: #fff;  
          z-index: 99;  
          text-align: center; } 
-          
         #loading-image {  
          position: absolute;  
          top: 50%;  
          left: 50%; 
          z-index: 100; }
     </style>
-   
+    {% load static %}
+    <link href="{% static 'signup.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
     {% if error %}
@@ -41,19 +41,31 @@
                 display.style.display = "inline";
             }
         </script>
-        <form method="POST">
+        <form class="signup" method="POST">
             {% csrf_token %}
-            <input name="id" placeholder="고려대학교 이메일 아이디" required><span>@korea.ac.kr</span>
-            <input type="password" name="password1" placeholder="비밀번호" required>
-            <input type="password" name="password2" placeholder="비밀번호 확인" required>
-            <button type="submit" id="button" onclick="show()">가입하기</button>
+            <div id="signup_main">
+                <div id="signup_items_1">
+                    <div id="ID">ID</div>
+                    <span><input id="id" name="id" placeholder="포털 아이디" required><p id="korea">@korea.ac.kr</p></span>
+                </div>
+                <div id="signup_items">
+                    <div ID="PASSWORD">PASSWORD</div>
+                    <input type="password" name="password1" placeholder="비밀번호" required>
+                </div>
+                <div id="signup_items">
+                <div ID="PASSWORD2">PASSWORD 확인</div>
+                    <input type="password" name="password2" placeholder="비밀번호 확인" required>
+                </div>
+            </div>
+            <button type="submit" id="button" onclick="show()"><p>고려대 메일로 인증하기</p></button>
+        </div>
         </form>
-        <p>가입하기 버튼을 누른 후 발송 메일이 뜰때 까지 잠시만 기다려 주세요</p>
+
+        <p id="notice">'인증하기' 버튼을 누른 후 발송 메일이 뜰 때까지 잠시만 기다려 주세요</p>
     </div>
     {% load static %}
     <div id="loading" style="display: none;">
         <img id="loading-image" src="{% static '91.gif' %}" alt="Loading..." />
     </div>
-    
 </body>
 </html>

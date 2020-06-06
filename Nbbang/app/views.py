@@ -9,10 +9,15 @@ from .models import Profile, food, ott, shopping,franchise, others
 from .start import send_email, nick_location, login_check,activate_account
 
 # new 
+from .new import create_food, create_franchise, create_others, create_ott, create_shopping
+
+from datetime import datetime
 
 # -----------------------signup & login---------------------
 # 첫번쨰 시작시 페이지
 def start(request):
+    if len(request.user.username)>0:
+        return redirect('index')
     return render(request, 'registration/start.html')
 
 # 고대 인증 메일 보내내는 과정
@@ -42,11 +47,11 @@ def login(request):
         user = login_check(request)
         if user is not None:
             auth.login(request, user)
-            return redirect('index')
+            return redirect(request.GET.get('next', '/index'))
         else:
             return render(request, 'registration/login.html', {'error': '아이디 혹은 비밀번호 틀림'})
-    else:
-        return render(request, 'registration/login.html')
+    
+    return render(request, 'registration/login.html')
 
 def logout(request):
     auth.logout(request)
@@ -57,50 +62,163 @@ def activate(request, uidb64, token):
     return activate_account(request, uidb64, token)
 
 # ---------------------home---------------------------
-
+@login_required(login_url= '/registration/login')
 def index(request):
     foods = food.objects.all()
     return render(request, 'index.html', {'foods' : foods} )
 
 
 # -----------------------new--------------------------
+@login_required(login_url= '/registration/login')
 def new_category(request):
+    
     return render(request, 'new/category.html')
 
+@login_required(login_url= '/registration/login')
 def new_food(request):
     if request.method == "POST":
-        
-        return redirect('index')
+        _new_food = create_food(request)
+        return redirect('detail_food', _new_food.pk)
+        # return redirect('detail',0 , _new_food.pk)
     return render(request, 'new/new_food.html')
 
-def new_franchies(request):
+@login_required(login_url= '/registration/login')
+def new_franchise(request):
     if request.method == "POST":
-        
-        return redirect('index')
+        _new_franchise = create_franchise(request)
+        return redirect('detail_franchise', _new_franchise.pk)
     return render(request, 'new/new_franchise.html')
 
+@login_required(login_url= '/registration/login')
 def new_ott(request):
     if request.method == "POST":
-        
-        return redirect('index')
+        _new_ott = create_ott(request)
+        return redirect('detail_ott', _new_ott.pk)
     return render(request, 'new/new_ott.html')
 
+@login_required(login_url= '/registration/login')
 def new_shopping(request):
     if request.method == "POST":
-        
-        return redirect('index')
+        _new_shopping = create_shopping(request)
+        return redirect('detail_shopping', _new_shopping.pk)
     return render(request, 'new/new_shopping.html')
 
+@login_required(login_url= '/registration/login')
 def new_others(request):
     if request.method == "POST":
-        
-        return redirect('index')
+        _new_others = create_others(request)
+        return redirect('detail_others', _new_others.pk)
     return render(request, 'new/new_others.html')
 
 # -----------------------edit------------------------
+@login_required(login_url= '/registration/login')
+def edit_food(request, food_pk):
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def edit_franchise(request, food_pk):
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def edit_ott(request, food_pk):
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def edit_shopping(request, food_pk):
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def edit_others(request, food_pk):
+    return redirect('index')
 
 # -----------------------delete----------------------
+@login_required(login_url= '/registration/login')
+def delete_food(request, food_pk):
+    del_food = food.objects.get(pk = food_pk)
+    del_food.delete()
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def delete_franchise(request, franchise_pk):
+    del_franchise = franchise.objects.get(pk = franchise_pk)
+    del_franchise.delete()
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def delete_ott(request, ott_pk):
+    del_ott = ott.objects.get(pk = ott_pk)
+    del_ott.delete()
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def delete_shopping(request, shopping_pk):
+    del_shopping = shopping.objects.get(pk = shopping_pk)
+    del_shopping.delete()
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def delete_others(request, others_pk):
+    del_others = others.objects.get(pk = others_pk)
+    del_others.delete()
+    return redirect('index')
 
 # -----------------------detail----------------------
+@login_required(login_url= '/registration/login')
+def detail_food(request, food_pk):
+    current_food = food.objects.get(pk = food_pk)
+    print(current_food.location)
+    save_money = int(current_food.baedalTip)/2
+    return render(request, 'detail/detail_food.html', {'food' : current_food, 'save_money':int(save_money)})
+
+@login_required(login_url= '/registration/login')
+def detail_franchise(request, franchise_pk):
+    current_franchise = franchise.objects.get(pk = franchise_pk)
+    return render(request, 'detail/detail_franchise.html',{'franchise':current_franchise})
+
+@login_required(login_url= '/registration/login')
+def detail_ott(request, ott_pk):
+    current_ott = ott.objects.get(pk = ott_pk)
+    return render(request, 'detail/detail_ott.html',{'ott':current_ott})
+
+@login_required(login_url= '/registration/login')
+def detail_shopping(request, shopping_pk):
+    shopping_pk = shopping.objects.get(pk = shopping_pk)
+    return render(request, 'detail/detail_shopping.html',{'shopping':shopping_pk})
+
+@login_required(login_url= '/registration/login')
+def detail_others(request, others_pk):
+    current_others = others.objects.get(pk =others_pk )
+    return render(request, 'detail/detail_others.html', {'others':current_others})
+
+#------------------------all_items---------------------
+@login_required(login_url= '/registration/login')
+def all_food(request):
+    hour = datetime.now().strftime('%H')
+    minute = datetime.now().strftime('%M')
+    all_food = food.objects.all()
+    return render(request, 'all/all_food.html', {'foods' : all_food, "hour":hour, "minute":minute})
+
+@login_required(login_url= '/registration/login')
+def all_franchise(request):
+    all_franchise = franchise.objects.all()
+    return render(request, 'all/all_franchise.html',{'franchises':all_franchise})
+
+@login_required(login_url= '/registration/login')
+def all_ott(request):
+    all_ott = ott.objects.all()
+    return render(request, 'all/all_ott.html',{'otts':all_ott})
+
+@login_required(login_url= '/registration/login')
+def all_shopping(request):
+    all_shopping = shopping.objects.all()
+    return render(request, 'all/all_shopping.html',{'shoppings':all_shopping})
+
+@login_required(login_url= '/registration/login')
+def all_others(request):
+    all_others = others.objects.all()
+    return render(request, 'all/all_others.html', {'others':all_others})
+
 
 # -----------------------my_profile----------------------
+def myhome(request):
+    return render(request, 'myhome/myhome.html')

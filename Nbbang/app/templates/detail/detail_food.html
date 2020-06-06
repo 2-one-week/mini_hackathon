@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css'>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+</head>
+<body>
+    <div class="detail-box">
+        <div class="detail-top">
+            <div class="exit">
+                <span class="material-icons"> clear </span>
+            </div>
+            <div class="category">
+                <p>배달음식</p>
+            </div>
+            <div class="title">
+                <h1>{{food.title}}</h1>
+            </div>
+        </div>
+        <div class="detail-main">
+            <div class="table">
+                <table>
+                    <th></th>
+                    <tr><!--첫번째 줄 시작-->
+                        <td class="left"><div>가</div><div>게</div></td>
+                        <td class="right">????</td>
+                    </tr>
+                    <tr><!--두번째 줄 시작-->
+                        <td class="left"><div>필</div><div>요</div><div>금</div><div>액</div></td>
+                        <td class="right">{{food.left}}</td>
+                    </tr>
+                    <tr><!--세번째 줄 시작-->
+                        <td class="left"><div>메</div><div>뉴</div></td>
+                        <td><button><a href="{{food.appLink}}">메뉴 보러가기</a></button></td>
+                    </tr>
+                    <tr><!--네번째 줄 시작-->
+                        <td class="left"><div>마</div><div>감</div><div>기</div><div>한</div></td>
+                        <td class="right">{{food.deadline1}} {{food.deadline2}}</td>
+                    </tr>
+                    <tr><!--다섯번째 줄 시작-->
+                        <td class="left"><div>위</div><div>치</div></td>
+                        <td class="right">{{food.location}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--여기서부터 일반 유저-->
+            {% if user.is_authenticated and Memo.author.pk == user.pk %}
+            <div class="for-uploader">
+                <button class="edit" href="" type="submit">수정하기</button>
+                <button class="magam" href="" type="submit">마감하기</button>
+            </div>
+            {% else %}
+            <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">{{save_money}}</span>원을 아낄 수 있어요!</h2>
+
+            <button class="join" href="" type="submit">참가하기</button>
+            {% endif %}
+            <!--여기서부터 게시자 only-->
+            
+        </div>
+    </div>
+</body>

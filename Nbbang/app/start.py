@@ -20,8 +20,8 @@ def send_email(request):
         'registration/activation_email.html', 
             {
             'user': user,
-            'domain': current_site.domain,
-            # 'domain': 'https://2791c9da0029.ngrok.io',
+            # 'domain': current_site.domain,
+            'domain': 'https://bbc1a95c55f7.ngrok.io',
             'uid': urlsafe_base64_encode(force_bytes(user.pk)),
             'token': account_activation_token.make_token(user),
             } 
@@ -35,20 +35,22 @@ def send_email(request):
 def nick_location(request,user_pk):
     user = User.objects.get(pk = user_pk)
     found_profile = Profile.objects.filter(nickname = request.POST['nickname'])
-    if found_profile is None:
+    if len(found_profile)>0:
+        error = '해당 닉네임은 이미 존재 다른거 쓰셈'
+        return render(request, 'registration/nickname.html', {'error':error})
+    else:
         new_profile = Profile(
             username = user,
             nickname = request.POST['nickname'],
             location = request.POST['location'],
             hidden_loc = request.POST['real_location'],
             trust = 0,
-            money = 0
+            money = 0,
+            img = 0
         )
         new_profile.save()
         return new_profile
-    else:
-        error = '해당 닉네임은 이미 존재 다른거 쓰셈'
-        return render(request, 'registration/nickname.html', {'error':error})
+        
     
     return 
     
