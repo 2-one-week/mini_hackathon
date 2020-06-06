@@ -20,8 +20,9 @@ def send_email(request):
         'registration/activation_email.html', 
             {
             'user': user,
-            # 'domain': current_site.domain,
-            'domain': 'https://f1fd11c50f96.ngrok.io',
+            'domain': current_site.domain,
+            
+            # 'domain': 'https://ef2c173a72b3.ngrok.io',
             'uid': urlsafe_base64_encode(force_bytes(user.pk)),
             'token': account_activation_token.make_token(user),
             } 
@@ -46,7 +47,7 @@ def nick_location(request,user_pk):
             hidden_loc = request.POST['real_location'],
             trust = 0,
             money = 0,
-            img = './'
+            img = 0
         )
         new_profile.save()
         return new_profile

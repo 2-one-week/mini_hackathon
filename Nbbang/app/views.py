@@ -1,8 +1,9 @@
 # 기본
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse 
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 
 # sign up
 from .models import Profile, food, ott, shopping,franchise, others
