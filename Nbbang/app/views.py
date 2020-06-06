@@ -12,7 +12,7 @@ from .start import send_email, nick_location, login_check,activate_account
 from .new import create_food, create_franchise, create_others, create_ott, create_shopping
 
 #update
-from .edit import update_food, update_franchise, update_others, update_ott, update_shopping
+from .edit import update_food, update_franchise, update_others, update_ott, update_shopping, update_nickname
 
 from datetime import datetime
 
@@ -67,8 +67,33 @@ def activate(request, uidb64, token):
 # ---------------------home---------------------------
 @login_required(login_url= '/registration/login')
 def index(request):
-    foods = food.objects.all()
-    return render(request, 'index.html', {'foods' : foods} )
+    foods = food.objects.filter(location = request.user.profile.location).order_by('deadline1', 'deadline2')
+    franchises = franchise.objects.filter(location = request.user.profile.location).order_by('deadline1', 'deadline2')
+    shoppings = shopping.objects.filter(location = request.user.profile.location).order_by('deadline1', 'deadline2')
+    otts = ott.objects.filter(location = request.user.profile.location)
+    otherss = others.objects.filter(location = request.user.profile.location).order_by('deadline1', 'deadline2')
+    
+    all_foods = food.objects.all().order_by('deadline1', 'deadline2')
+    all_franchises = franchise.objects.all().order_by('deadline1', 'deadline2')
+    all_shoppings = shopping.objects.all().order_by('deadline1', 'deadline2')
+    all_otts = ott.objects.all()
+    all_otherss = others.objects.all().order_by('deadline1', 'deadline2')
+    
+    print(all_foods)
+    return render(request, 
+                  'index.html', 
+                  {'foods' : foods,
+                   'franchises':franchises,
+                   'shoppings':shoppings,
+                   'otts':otts,
+                   'otherss':otherss,
+                   
+                   'all_foods' : all_foods,
+                   'all_franchises':all_franchises,
+                   'all_shoppings':all_shoppings,
+                   'all_otts':all_otts,
+                   'all_otherss':all_otherss
+                   } )
 
 
 # -----------------------new--------------------------
@@ -189,14 +214,7 @@ def delete_others(request, others_pk):
 @login_required(login_url= '/registration/login')
 def detail_food(request, food_pk):
     current_food = food.objects.get(pk = food_pk)
-    print(current_food.appLink)
-    print(current_food.appLink.find('https'))
-    shop_loc = current_food.appLink.find("'",2)
-    loc = current_food.appLink.find('https')
-    shop = current_food.appLink[1:shop_loc]
-    url = (current_food.appLink[loc:])
-    save_money = int(current_food.baedalTip)/2
-    return render(request, 'detail/detail_food.html', {'food' : current_food, 'save_money':int(save_money), 'shop': shop, 'url': url})
+    return render(request, 'detail/detail_food.html', {'food' : current_food})
 
 @login_required(login_url= '/registration/login')
 def detail_franchise(request, franchise_pk):
@@ -257,6 +275,8 @@ def getin(request):
     return render(request, 'myhome/myhome-getin.html')
 
 def editprofile(request):
+    if request.method == "POST":
+        update_nickname(request)
     return render(request, 'myhome/myhome-editprofile.html')
 
 def delete_user(request):

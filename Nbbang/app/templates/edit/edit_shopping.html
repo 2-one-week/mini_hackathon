@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="{% url 'new_category' %}">
+        <a href="{% url 'detail_shopping' shopping.pk %}">
             <div class="exit">
                 <span class="material-icons">arrow_back</span>
             </div>
@@ -84,8 +84,13 @@
                 <input type="text" name="kakaoLink" placeholder="오픈카톡방 링크" required>
                 <input type="text" name="memo" placeholder="메모(선택)">
             </div>
-            <button type="submit">게시하기</button>
+            <button type="submit">수정하기</button>
+            
         </form>
+        <a href="{% url 'delete_shopping' shopping.pk %}">
+            <button type="button">삭제하기</button>
+        </a>
+        
     </div>
     
 

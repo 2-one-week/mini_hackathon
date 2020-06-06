@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="{% url 'new_category' %}">
+        <a href="{% url 'detail_franchise' %}">
             <div class="exit">
                 <span class="material-icons">arrow_back</span>
             </div>
@@ -97,7 +97,13 @@
                 <input type="text" name="memo" placeholder="메모(선택)">
             </div>
             <button type="submit">게시하기</button>
+            
         </form>
+        <div class="button-botton">
+            <a href="{% url 'delete_franchise' franchise.pk %}">
+                <button type="button">삭제하기</button>
+            </a>
+        </div>
     </div>
     
 

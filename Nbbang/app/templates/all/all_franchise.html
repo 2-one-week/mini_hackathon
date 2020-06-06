@@ -42,6 +42,53 @@
         <div class="post-table">
         {% for franchise in franchises %}
             <table>
+                <div class="modal fade" id="{{food.pk}}" role="dialog"> 
+                    <div class="modal-dialog">
+                        <div class="modal-content" id="detail-box">
+                            <div class="modal-header" id="detail-top">
+                                <div class="exit" id="exit">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span class="material-icons"> clear </span>
+                                    </button>
+                                </div>
+                                
+                                <p class="modal-title category" id="category">프랜차이즈 할인행사</p> 
+                                <div id="title">
+                                    <h1>{{franchise.title}}</h1>
+                                </div>
+                            </div>
+                
+                            <div class="modal-body" id="detail-main">
+                                <div class="row" id="tr">
+                                    <div class="col-xs-5" id="left"><p>가게</p></div>
+                                    <div class="col-xs-7" id="right">GS 고대으뜸점</div>
+                                </div>
+                                <div class="row" id="tr">
+                                    <div class="col-xs-5" id="left"><p>행사내용</p></div>
+                                    <div class="col-xs-7" id="right">4캔 1만원</div>
+                                </div>
+                                <div class="row" id="tr">
+                                    <div class="col-xs-5" id="left"><p>정원</p></div>
+                                    <div class="col-xs-7" id="right">2/4</div>
+                                </div>
+                                <div class="row" id="tr">
+                                    <div class="col-xs-5" id="left"><p>마감기한</p></div>
+                                    <div class="col-xs-7" id="right">6/6 13:00</div>
+                                </div>
+                                <div class="row" id="tr">
+                                    <div class="col-xs-12" id="h2">강호랑님, 지금 팟에 참여하시면<br> <span id="orange">16,00원</span>을 아낄 수 있어요!</div>
+                                </div>
+                                <div class="row" id="tr">
+                                    <div class="col-xs-12" id="h2"><button id="join">참가하기</button></div>
+                                </div>
+                                <div class="row" id="tr">
+                                    <div class="col-xs-6" id="h2"><button id="edit">수정하기</button></div>
+                                    <div class="col-xs-6" id="h2"><button id="magam">마감하기</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <tr id="tr-1"> 
                     <td>{{franchise.location}}</td>
                 </tr>

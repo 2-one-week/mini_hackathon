@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="{% url 'new_category' %}">
+        <a href="{% url 'detail_ott' ott.pk %}">
             <div class="exit">
                 <span class="material-icons">arrow_back</span>
             </div>
@@ -33,6 +33,13 @@
                 <input type="text" name="memo" placeholder="메모(선택)">
             </div>
             <button type="submit">게시하기</button>
+            
         </form>
+        <div class="button-botton">
+            
+        </div>
+        <a href="{% url 'delete_ott ott.pk %}">
+            <button type="button">삭제하기</button>
+        </a>
     </div>
 </body>

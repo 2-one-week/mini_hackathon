@@ -40,7 +40,7 @@
                 </table>
             </div>
 
-            {% if user.is_authenticated and food.author.pk == user.pk %}
+            {% if user.is_authenticated and ott.author.pk == user.pk %}
             <div class="for-uploader">
                 <button class="edit" href="" type="submit">수정하기</button>
                 <button class="magam" href="" type="submit">마감하기</button>

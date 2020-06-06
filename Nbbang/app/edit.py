@@ -1,4 +1,4 @@
-from .models import food, ott, shopping,franchise, others
+from .models import Profile, food, ott, shopping,franchise, others
 
 def update_food(request, food_pk):
     month = str(request.POST['month'])
@@ -83,3 +83,10 @@ def update_others(request, others_pk):
         end = 0
     )
     return edit_others
+
+def update_nickname(request):
+    edit_profile = Profile.objects.filter(pk = request.user)
+    edit_profile.update(
+        nickname = request.POST['nickname']
+    )
+    return edit_profile

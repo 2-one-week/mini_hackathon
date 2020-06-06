@@ -3,32 +3,40 @@ from .models import food, ott, shopping,franchise, others
 def create_food(request):
     month = str(request.POST['month'])
     day = str(request.POST['day'])
+    shop_loc = request.POST['appLink'].find("'",2)
+    loc = request.POST['appLink'].find('https')
+    _shop = request.POST['appLink'][1:shop_loc]
+    url = (request.POST['appLink'][loc:])
+    save_money = int(request.POST['baedalTip'])/2
     _new_food = food.objects.create(
         author = request.user,
         title = request.POST['title'],
-        location = request.POST['location'],
+        location = request.user.profile.location,
+        author_location = request.user.profile.hidden_loc,
+        shop = _shop,
         deadline1 = month +'/'+day,
         deadline2 = request.POST['time'],
-        appLink = request.POST['appLink'],
+        appLink = url,
         left = request.POST['left'],
         kakaoLink = request.POST['kakaoLink'],
         baedalTip = request.POST['baedalTip'],
         memo = request.POST['memo'],
-        end = 0
+        end = 0,
+        savemoney = save_money
         )
     return _new_food
 
 def create_franchise(request):
     month = str(request.POST['month'])
     day = str(request.POST['day'])
-    shop_name = request.POST['shop_name']
-    shop_detail = request.POST['shop_detail']
+    shop_name = request.POST['shop']
     _new_franchise = franchise.objects.create(
         author = request.user,
+        location = request.user.profile.location,
         title = request.POST['title'],
         deadline1 = month +'/'+day,
         deadline2 = request.POST['time'],
-        shop = shop_name+shop_detail,
+        shop = shop_name,
         item = request.POST['item'],
         event = request.POST['event'],
         kakaoLink = request.POST['kakaoLink'],

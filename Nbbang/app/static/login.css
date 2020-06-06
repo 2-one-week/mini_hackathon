@@ -145,3 +145,7 @@ span {
     text-align: left;
     color: #271919;
 }
+
+a {
+    text-decoration: none;
+}

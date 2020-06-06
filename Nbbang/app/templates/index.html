@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css'>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
     user-scalable=no" />
+    <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
     <title>HOME</title>
 
 </head>
@@ -17,7 +20,7 @@
         <div class="header">
             <div class="header-1">
                 <div class="alam">
-                    <span class="material-icons"> notifications </span>
+                    
                 </div>
                 <div class="location">
                     내 위치: {{user.profile.location}}
@@ -51,60 +54,151 @@
                 </div>
                 <div class="locate-recognition-main">
                     <table>
+                        {% for food in foods %}
+                        {% if food.end == '0' %}
                         <tr class="thumbnail-bar">
                             <td class="thumbnail-bar-category">
                                 <p>배달음식</p>
                             </td>
-                            <td class="thumbnail-bar-title"><p>신전떡볶이 팟 구해요~</p></td>
-                            <td class="thumbnail-bar-deadline">~13:00</td>
+                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_food' food.pk %}">{{food.title}}</a></p></td>
+                            <td class="thumbnail-bar-deadline">~{{food.deadline1}} {{food.deadline2}} </td>
                         </tr>
-                        <tr class="thumbnail-bar">
-                            <td class="thumbnail-bar-category">
-                                <p>할인행사</p>
-                            </td>
-                            <td class="thumbnail-bar-title">정문GS 4캔 만원</td>
-                            <td class="thumbnail-bar-deadline">~24:00</td>
-                        </tr>
-                        <tr class="thumbnail-bar">
-                            <td class="thumbnail-bar-category">
-                                <p>배달음식</p>
-                            </td>
-                            <td class="thumbnail-bar-title">신전떡볶이 팟 구해요~</td>
-                            <td class="thumbnail-bar-deadline">~13:00</td>
-                        </tr>
+                        {% endif %}
+                        {% endfor %}
                     </table>
                 </div>
             </div>
+
             <div class="all">
                 <div class="all-top">
-                    <div class="title">전체 N빵</div>
+                    <div class="title">전체 배달 음식 N빵</div>
                     <div class="seemore">
-                        <p>더보기</p>
+                        <a href="{% url 'all_food' %}">
+                            <p>더보기</p>
+                        </a>
                     </div>
                 </div>
                 <div class="all-main">
                     <table>
+                        {% for food in all_foods %}
+                        {% if food.end == '0' %}
                         <tr class="thumbnail-bar">
                             <td class="thumbnail-bar-category">
-                                <p>배달음식</p>
+                                <p>{{food.location}}</p>
                             </td>
-                            <td class="thumbnail-bar-title"><p>신전떡볶이 팟 구해요~</p></td>
-                            <td class="thumbnail-bar-deadline">~13:00</td>
+                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_food' food.pk %}">{{food.title}}</a></p></td>
+                            <td class="thumbnail-bar-deadline">~{{food.deadline1}} {{food.deadline2}} </td>
                         </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+            <div class="all">
+                <div class="all-top">
+                    <div class="title">전체 OTT N빵</div>
+                    <div class="seemore">
+                        <a href="{% url 'all_ott' %}">
+                            <p>더보기</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="all-main">
+                    <table>
+                        {% for ott in all_otts %}
+                        {% if ott.end == '0' %}
                         <tr class="thumbnail-bar">
                             <td class="thumbnail-bar-category">
-                                <p>할인행사</p>
+                                <p>{{ott.service}}</p>
                             </td>
-                            <td class="thumbnail-bar-title">정문GS 4캔 만원</td>
-                            <td class="thumbnail-bar-deadline">~24:00</td>
+                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_ott' ott.pk %}">{{ott.title}}</a></p></td>
+                            <td class="thumbnail-bar-deadline">~{{ott.people}}</td>
                         </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+            <div class="all">
+                <div class="all-top">
+                    <div class="title">전체 할인 행사 N빵</div>
+                    <div class="seemore">
+                        <a href="{% url 'all_franchise' %}">
+                            <p>더보기</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="all-main">
+                    <table>
+                        {% for franchise in all_franchises %}
+                        {% if franchise.end == '0' %}
                         <tr class="thumbnail-bar">
                             <td class="thumbnail-bar-category">
-                                <p>배달음식</p>
+                                <p>프렌차이즈</p>
                             </td>
-                            <td class="thumbnail-bar-title">신전떡볶이 팟 구해요~</td>
-                            <td class="thumbnail-bar-deadline">~13:00</td>
+                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_franchise' franchise.pk %}">{{franchise.title}}</a></p></td>
+                            <td class="thumbnail-bar-deadline">~{{franchise.deadline1}} {{franchise.deadline2}} </td>
                         </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            
+            
+
+            
+
+            <div class="all">
+                <div class="all-top">
+                    <div class="title">전체 인터넷 쇼핑 N빵</div>
+                    <div class="seemore">
+                        <a href="{% url 'all_food' %}">
+                            <p>더보기</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="all-main">
+                    <table>
+                        {% for shopping in all_shoppings %}
+                        {% if shopping.end == '0' %}
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>{{shopping.location}}</p>
+                            </td>
+                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_shopping' shopping.pk %}">{{shopping.title}}</a></p></td>
+                            <td class="thumbnail-bar-deadline">~{{shopping.deadline1}} {{shopping.deadline2}} </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+            <div class="all">
+                <div class="all-top">
+                    <div class="title">전체 기타 N빵</div>
+                    <div class="seemore">
+                        <a href="{% url 'all_others' %}">
+                            <p>더보기</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="all-main">
+                    <table>
+                        {% for other in all_otherss %}
+                        {% if other.end == '0' %}
+                        <tr class="thumbnail-bar">
+                            <td class="thumbnail-bar-category">
+                                <p>{{other.location}}</p>
+                            </td>
+                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_food' food.pk %}">{{other.title}}</a></p></td>
+                            <td class="thumbnail-bar-deadline">~{{other.deadline1}} {{other.deadline2}} </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
                     </table>
                 </div>
             </div>

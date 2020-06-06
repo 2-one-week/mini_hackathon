@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="danawa-result.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="back-icon">
+        <a href="home.html">
+        <span id="icon-back" class="material-icons">
+        keyboard_backspace
+        </span>
+        </a>
+    </div>
+    <div id="danawa-title"> 최저가 확인하기 </div>
+    <form method="POST" id="danawa-search">
+        <input type="text" value="{{product.title}}" placeholder="상품 검색하기">
+        <button type="submit"><span class="material-icons">
+            search
+            </span></button>
+        </form>
+    <main id="danawa-result">
+        <div id="main-title">
+            다나와 검색 결과(인기상품순):
+        </div>
+        <div class="main-table">
+        <table>
+            {% for i in range(2) %}
+            <tr>
+                <td id="table-img">
+                    <img src="{{img_src}}">
+                </td>
+                <td id="table-title">
+                    {{title}}
+                </td>
+                <td id="table-price">
+                    {{price}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+
+    </main>
+</body>
+</html>

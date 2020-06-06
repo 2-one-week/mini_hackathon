@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="{% url 'new_category' %}">
+        <a href="{% url 'detail_food' food.pk %}">
             <div class="exit">
                 <span class="material-icons">arrow_back</span>
             </div>
@@ -99,7 +99,11 @@
                 <input type="text" name="memo" placeholder="메모(선택)" value="{{food.memo}}">
             </div>
             <button type="submit">게시하기</button>
+            
         </form>
+            <a href="{% url 'delete_food' food.pk %}">
+                <button type="button">삭제하기</button>
+            </a>
     </div>
 
 </body>

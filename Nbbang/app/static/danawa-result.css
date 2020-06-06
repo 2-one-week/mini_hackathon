@@ -1,0 +1,150 @@
+body {
+    width: 100%;
+    background-color: rgba(255, 174, 103, 0.15);
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#back-icon {
+    display: flex;
+    width: 33.33%;
+    box-sizing: border-box;
+    padding-left: 5.3333%;
+    padding-top: 28px;
+}
+
+#icon-back {
+    width: 20px;
+    height: 20px;
+    color: #ac5910;
+}
+
+#danawa-title {
+    font-family: KoPubWorldDotum;
+    font-size: 25px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.52;
+    letter-spacing: normal;
+    text-align: left;
+    color: #502600;
+    margin-top: 50px;
+    margin-left: 5.3333%;
+}
+
+#danawa-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 19px;
+}
+
+form {
+    display: flex;
+    width: 89.333%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: none;
+    margin-left: 5.3333%;
+    box-sizing: border-box;
+}
+
+input {
+    width: 74.4%;
+    height: 30px;
+    border: none;
+    margin-left: 5.3333%;
+}
+
+button {
+    display: flex;
+    width: 15.9px;
+    height: 16.9px;
+    color: #a28c78;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    right: 10.66667%;
+    justify-content: center;
+    align-items: center;
+}
+
+input::placeholder {
+    opacity: 0.53;
+    font-family: KoPubWorldDotum;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #502600;
+}
+
+.main-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-title {
+    margin-left: 5.3333%;
+    margin-top: 17px;
+    font-family: KoPubWorldDotum;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: left;
+    color: #502600;
+}
+
+table {
+    display: flex;
+    width: 89.3333%;
+    height: 246px;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+tbody {
+    display: flex;
+    width: 100%;
+    height: 33.3333%;
+    align-items: center;
+    border-bottom: 1px solid #707070;
+}
+
+tr {
+    display: flex;
+    width: 100%;
+    height: 33.33%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+#table-img {
+    display: flex;
+}
+
+#table-title {
+    display: flex;
+}
+
+#table-price {
+    display: flex;
+}
+*/
