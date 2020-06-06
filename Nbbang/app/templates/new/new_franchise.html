@@ -80,8 +80,16 @@
                     </div>
                 <input type="time" name="time" pattern="([1]?[0-9]|2[0-3]):[0-5][0-9]"/>
                 <select class="shop" name="shop">
-                    <option value="now-location">현 위치</option>
-                    <option value="my-location">내 집</option>
+                    <select class="locations" name="location">
+                        <option value="참살이길">참살이길</option>
+                        <option value="정대후문">정대후문</option>
+                        <option value="이공계">이공계</option>
+                        <option value="안암오거리">안암오거리</option>
+                        <option value="제기동">제기동</option>
+                        <option value="고대사거리">고대사거리</option>
+                        <option value="정문앞">정문앞</option>
+                        <option value="법대후문">법대후문</option>
+                    </select>
                 </select>
                 <input type="text" name="item" placeholder="품목" required>
                 <input type="text" name="event" placeholder="행사내용" required>

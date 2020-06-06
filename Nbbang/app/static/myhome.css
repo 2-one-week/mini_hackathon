@@ -184,7 +184,7 @@ h3{
 
 .editprofile-photo{
     border-style: none;
-    background-color: none;
+    background-color: #FFF3E8;
 }
 
 
@@ -221,4 +221,52 @@ input::placeholder{
     border-style: none;
     margin-top: 200px;
     font-family: KoPubWorldDotum;;
+}
+
+.mine-contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 38px;
+}
+
+.mine-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 20px;
+    width: 90%;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+table{
+    margin: 20px;
+}
+.category{
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.title{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.when{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.lets_evaluate{
+    border-radius: 0px 20px 20px 0px;
+    border-style: none;
+    background-color: #ffae66;
+    font-family: KoPubWorldDotum;
+    width: 26%;
+    font-size: 15px;
+    font-weight: 500;
 }

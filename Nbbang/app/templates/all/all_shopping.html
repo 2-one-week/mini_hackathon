@@ -7,6 +7,9 @@
     {% load static %}
     <link href="{% static 'category-base.css' %}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
     <header>
@@ -22,19 +25,24 @@
     </header>
     <main>
         <div class="select-box">
-        <img id="select-more" src="more.PNG">
-        <select class="select-location">
-            <option selected>위치별로 정렬</option>
-            <option>정후</option>
-            <option>정후</option>
-            <option>정후</option>
-            <option>정후</option>
-        </select>
+            {% load static %}
+            <img id="select-more" src="{% static 'check.png' %}">
+            <select class="locations select-location" name="location">
+                <option selected>위치별로 정렬</option>
+                <option value="참살이길">참살이길</option>
+                <option value="정대후문">정대후문</option>
+                <option value="이공계">이공계</option>
+                <option value="안암오거리">안암오거리</option>
+                <option value="제기동">제기동</option>
+                <option value="고대사거리">고대사거리</option>
+                <option value="정문앞">정문앞</option>
+                <option value="법대후문">법대후문</option>
+            </select>
         </div>
         <div class="post-table">
         {% for food in foods %}
             <table>
-                <tr id="tr-1"> 
+                <tr id="tr-1" > 
                     <td>{{food.location}}</td>
                 </tr>
                 <tr id="tr-2"> 

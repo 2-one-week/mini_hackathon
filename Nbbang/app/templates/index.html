@@ -112,20 +112,21 @@
 
 
         <div class="footer">
-            <div class="footer-flex2">
-                <a href="{% url 'index' %}">
+            <a href="{% url 'index' %}">
+                <div class="footer-flex2">
+                
                     <div class="retry">
                         <span class="material-icons"> cached </span>
                     </div>
-                </a>
-            </div>
-            <div class="footer-flex">
-              <a href="{% url 'new_category' %}">
-                <div class="plus">
-                    <span class="material-icons">add</span>
                 </div>
-              </a>
-            </div>
+            </a>
+            <a href="{% url 'new_category' %}">
+                <div class="footer-flex">
+                    <div class="plus">
+                        <span class="material-icons">add</span>
+                    </div>
+                </div>
+            </a>
 
         </div>
     </div>

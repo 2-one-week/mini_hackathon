@@ -94,7 +94,7 @@ table{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: 
+    align-items: center;
 }
 
 .right{

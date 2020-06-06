@@ -4,6 +4,7 @@ def create_food(request):
     month = str(request.POST['month'])
     day = str(request.POST['day'])
     _new_food = food.objects.create(
+        author = request.user,
         title = request.POST['title'],
         location = request.POST['location'],
         deadline1 = month +'/'+day,
@@ -23,6 +24,7 @@ def create_franchise(request):
     shop_name = request.POST['shop_name']
     shop_detail = request.POST['shop_detail']
     _new_franchise = franchise.objects.create(
+        author = request.user,
         title = request.POST['title'],
         deadline1 = month +'/'+day,
         deadline2 = request.POST['time'],
@@ -39,6 +41,7 @@ def create_shopping(request):
     month = str(request.POST['month'])
     day = str(request.POST['day'])
     _new_shopping = shopping.objects.create(
+        author = request.user,
         title = request.POST['title'],
         deadline1 = month +'/'+day,
         deadline2 = request.POST['time'],
@@ -51,6 +54,7 @@ def create_shopping(request):
 
 def create_ott(request):
     _new_ott = ott.objects.create(
+        author = request.user,
         title = request.POST['title'],
         people = request.POST['people'],
         kakaoLink = request.POST['kakoLink'],
@@ -63,6 +67,7 @@ def create_others(request):
     month = str(request.POST['month'])
     day = str(request.POST['day'])
     _new_others = others.objects.create(
+        author = request.user,
         title = request.POST['title'],
         deadline1 = month +'/'+day,
         deadline2 = request.POST['time'],

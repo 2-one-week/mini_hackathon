@@ -166,9 +166,14 @@ def delete_others(request, others_pk):
 @login_required(login_url= '/registration/login')
 def detail_food(request, food_pk):
     current_food = food.objects.get(pk = food_pk)
-    print(current_food.location)
+    print(current_food.appLink)
+    print(current_food.appLink.find('https'))
+    shop_loc = current_food.appLink.find("'",2)
+    loc = current_food.appLink.find('https')
+    shop = current_food.appLink[1:shop_loc]
+    url = (current_food.appLink[loc:])
     save_money = int(current_food.baedalTip)/2
-    return render(request, 'detail/detail_food.html', {'food' : current_food, 'save_money':int(save_money)})
+    return render(request, 'detail/detail_food.html', {'food' : current_food, 'save_money':int(save_money), 'shop': shop, 'url': url})
 
 @login_required(login_url= '/registration/login')
 def detail_franchise(request, franchise_pk):
@@ -193,10 +198,8 @@ def detail_others(request, others_pk):
 #------------------------all_items---------------------
 @login_required(login_url= '/registration/login')
 def all_food(request):
-    hour = datetime.now().strftime('%H')
-    minute = datetime.now().strftime('%M')
     all_food = food.objects.all()
-    return render(request, 'all/all_food.html', {'foods' : all_food, "hour":hour, "minute":minute})
+    return render(request, 'all/all_food.html', {'foods' : all_food})
 
 @login_required(login_url= '/registration/login')
 def all_franchise(request):
@@ -220,5 +223,6 @@ def all_others(request):
 
 
 # -----------------------my_profile----------------------
+@login_required(login_url= '/registration/login')
 def myhome(request):
     return render(request, 'myhome/myhome.html')

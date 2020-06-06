@@ -195,6 +195,152 @@ td {
     color: #ff0000;
 }
 
+/* body{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.modal-header{
+    width: 100%px;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    margin: 20px;
+    background-color: #ffae66;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-top{
+    margin-left: 20px;
+}
+
+.detail-main{
+    width: 335px;
+    background-color: #ffffff;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exit{
+    margin: 20px 20px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: #ac5910;;
+}
+
+.category{
+    margin: 0px;
+}
+
+.title{
+    margin: 0px;
+}
+
+/* p{
+    opacity: 0.56;
+    font-family: KoPubWorldDotum;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin: 0px;
+}
+
+h1{
+    font-family: KoPubWorldDotum;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0px 0px 20px 0px;
+}
+
+h2{
+    font-family: KoPubWorldDotum;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0px 20px 20px 20px;
+    text-align: center;
+} */
+
+.join{
+    width: 148px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #ffae66;
+    border-style: none;
+    font-family: KoPubWorldDotum;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* 
+table{
+    width: 210px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-family: KoPubWorldDotum;
+} */
+
+.left{
+    width: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right{
+    font-weight: bold;
+}
+
+.orange{
+    font-family: KoPubWorldDotum;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff7800;
+}
+
+.edit{
+    width: 148px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: none;
+    font-family: KoPubWorldDotum;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    background-color: #e2e2e2;
+}
+
+.magam{
+    width: 148px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #ffae66;
+    border-style: none;
+    font-family: KoPubWorldDotum;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.get-in{
+    width: 148px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #ffae66;
+    border-style: none;
+    font-family: KoPubWorldDotum;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 25px 0px;
+}
+
 @media(min-width: 768px) {
     table {
         display: flex;
