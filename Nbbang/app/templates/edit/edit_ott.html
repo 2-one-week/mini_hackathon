@@ -6,8 +6,9 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>new-OTT</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,
+    user-scalable=no" />
+    <title>edit-OTT</title>
 </head>
 <body>
     <div class="container">
@@ -21,7 +22,7 @@
             <div class="input-form">
                 <h1>OTT</h1>
                 <input type="text" name="title" placeholder="제목" required>
-                <select name="OTT-service">
+                <select name="OTT-service" class="locations">
                     <option value="netflix">넷플릭스</option>
                     <option value="watcha">왓챠플레이</option>
                     <option value="wavve">웨이브</option>
@@ -31,8 +32,7 @@
                 <input type="text" name="kakaoLink" placeholder="오픈카톡방 링크" required>
                 <input type="text" name="memo" placeholder="메모(선택)">
             </div>
+            <button type="submit">게시하기</button>
         </form>
     </div>
-    <button type="submit">게시하기</button>
-
 </body>

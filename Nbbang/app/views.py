@@ -11,6 +11,9 @@ from .start import send_email, nick_location, login_check,activate_account
 # new 
 from .new import create_food, create_franchise, create_others, create_ott, create_shopping
 
+#update
+from .edit import update_food, update_franchise, update_others, update_ott, update_shopping
+
 from datetime import datetime
 
 # -----------------------signup & login---------------------
@@ -113,23 +116,43 @@ def new_others(request):
 # -----------------------edit------------------------
 @login_required(login_url= '/registration/login')
 def edit_food(request, food_pk):
-    return redirect('index')
+    current_food = food.objects.get(pk = food_pk)
+    if request.method == 'POST':
+        update_food(request, food_pk)
+        return redirect('detail_food', food_pk)
+    return render(request, 'edit/edit_food.html', {'food' : current_food })
 
 @login_required(login_url= '/registration/login')
-def edit_franchise(request, food_pk):
-    return redirect('index')
+def edit_franchise(request, franchise_pk):
+    current_franchise = franchise.objects.get(pk = franchise_pk)
+    if request.method == 'POST':
+        update_franchise(request, franchise_pk)
+        return redirect('detail_franchise', franchise_pk)
+    return render(request, 'edit/edit_franchise.html', {'franchise' : current_franchise })
 
 @login_required(login_url= '/registration/login')
-def edit_ott(request, food_pk):
-    return redirect('index')
+def edit_ott(request, ott_pk):
+    current_ott = ott.objects.get(pk = ott_pk)
+    if request.method == 'POST':
+        update_ott(request, ott_pk)
+        return redirect('detail_ott', ott_pk)
+    return render(request, 'edit/edit_ott.html', {'ott' : current_ott })
 
 @login_required(login_url= '/registration/login')
-def edit_shopping(request, food_pk):
-    return redirect('index')
+def edit_shopping(request, shopping_pk):
+    current_shopping = shopping.objects.get(pk = shopping_pk)
+    if request.method == 'POST':
+        update_shopping(request, shopping_pk)
+        return redirect('detail_shopping', shopping_pk)
+    return render(request, 'edit/edit_shopping.html', {'shopping' : current_shopping })
 
 @login_required(login_url= '/registration/login')
-def edit_others(request, food_pk):
-    return redirect('index')
+def edit_others(request, others_pk):
+    current_others = others.objects.get(pk = others_pk)
+    if request.method == 'POST':
+        update_others(request, others_pk)
+        return redirect('detail_others', others_pk)
+    return render(request, 'edit/edit_franchise.html', {'others' : current_others })
 
 # -----------------------delete----------------------
 @login_required(login_url= '/registration/login')
@@ -226,3 +249,58 @@ def all_others(request):
 @login_required(login_url= '/registration/login')
 def myhome(request):
     return render(request, 'myhome/myhome.html')
+
+def mine(request):
+    return render(request, 'myhome/myhome-mine.html')
+
+def getin(request):
+    return render(request, 'myhome/myhome-getin.html')
+
+def editprofile(request):
+    return render(request, 'myhome/myhome-editprofile.html')
+
+def delete_user(request):
+    request.user.delete()
+    return redirect('signup')
+
+#--------------------------마감 치기------------------
+@login_required(login_url= '/registration/login')
+def magam_food(request, food_pk):
+    magam_food = food.objects.filter(pk = food_pk)
+    magam_food.update(
+        end = 1
+    )
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def magam_franchise(request, franchise_pk):
+    magam_franchise = franchise.objects.filter(pk = franchise_pk)
+    magam_franchise.update(
+            end = 1
+    )
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def magam_ott(request, ott_pk):
+    magam_ott = ott.objects.filter(pk = ott_pk)
+    magam_ott.update(
+        end = 1
+    )
+    return redirect('index')
+
+@login_required(login_url= '/registration/login')
+def magam_shopping(request, shopping_pk):
+    magam_shopping = shopping.objects.filter(pk = shopping_pk)
+    magam_shopping.update(
+        end = 1
+    )
+    return redirect('index')
+
+
+@login_required(login_url= '/registration/login')
+def magam_others(request, others_pk):
+    magam_others = others.objects.filter(pk = others_pk)
+    magam_others.update(
+        end = 1
+    )
+    return redirect('index')

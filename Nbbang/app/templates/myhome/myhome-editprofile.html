@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="myhome.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myhome.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이홈-회원정보수정</title>
@@ -11,7 +12,7 @@
     <div class="container">
         <dic class="header">
             <div id="header-icon">
-                <a href="home.html">
+                <a href="{% url 'myhome' %}">
                 <span class="material-icons">
                 keyboard_backspace
                 </span>
@@ -23,16 +24,24 @@
         
         <div class="profile">
             <div class="profile-photo">
-                <img src="https://postfiles.pstatic.net/MjAyMDA2MDZfMjE3/MDAxNTkxNDI4NTEyNDM3.xahFgbS3lCI7wcetK9DQ64eUZRpBfBVt5zt0Sxs_U1Ig.xW2h2quiVaXTM32ktRIASgLacUcNit7ywZ0mnrxe71Qg.PNG.tojay24/%EC%97%94%EB%B9%B5-%EB%B9%B5.png?type=w966">
+                <img src="{{user.profile.img}}">
             </div>
             <button class="editprofile-photo"><span class="material-icons">settings</span></button>
         </div>
 
         <div class="editprofile-nickname">
             <p>닉네임:</p>
-            <input type="text" placeholder="닉네임" value="{{ ~~~.~~~ }}">
+            <input type="text" placeholder="닉네임" value="{{user.profile.nickname}}">
         </div>
-
-        <button class="delete-account">회원 탈퇴</button>
+        <form method="POST">
+            {% csrf_token %}
+            <a href="{% url 'delete_user' %}">
+                <button class="delete-account" type="submit">회원 탈퇴</button>
+            </a>
+            
+            
+        </form>
+        
+        
     </div>
 </body>

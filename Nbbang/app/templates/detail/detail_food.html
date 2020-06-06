@@ -56,13 +56,18 @@
 
             {% if user.is_authenticated and food.author.pk == user.pk %}
             <div class="for-uploader">
-                <button class="edit" href="" type="submit">수정하기</button>
-                <button class="magam" href="" type="submit">마감하기</button>
+                <a href="{% url 'edit_food' food.pk %}">
+                    <button class="edit" href="" type="submit">수정하기</button>
+                </a>
+                <a href="{% url 'magam_food' food.pk %}">
+                    <button class="magam" href="" type="submit">마감하기</button>
+                </a>
+                
             </div>
             {% else %}
 
             <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">{{save_money}}</span>원을 아낄 수 있어요!</h2>
-
+            
             <button class="join" href="" type="submit">참가하기</button>
             {% endif %}
             

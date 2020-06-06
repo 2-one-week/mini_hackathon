@@ -30,21 +30,27 @@
             </div>
             <div class="profile-text">
                 <h1><span>{{user.profile.nickname}}</span>님,</h1>
-                <h2>지금까지 <span>15,340</span>원을 아끼셨어요!</h2>
+                <h2>지금까지 <span>{{user.profile.money}}</span>원을 아끼셨어요!</h2>
             </div>
         </div>
 
         <div class="credibility">
-            <h3><span>김호랑</span>님의 신뢰도</h3>
+            <h3><span>{{user.profile.nickname}}</span>님의 신뢰도</h3>
             <div class="credibility-bread">
                 <div>빵</div><div>빵</div><div>빵</div><div>빵</div><div>빵</div></div>
             <h4>엄청난 신뢰를 받고 있는 당신!</h4>
         </div>
 
         <div class="nav">
-            <div class="nav-mine">내가 모집한 팟</div>
-            <div class="nav-getin">내가 참가한 팟</div>
-            <div class="nav-profileedit">회원 정보 수정</div>
+            <a href="{% url 'mine' %}">
+                <div class="nav-mine">내가 모집한 팟</div>
+            </a>
+            <a href="{% url 'getin' %}">
+                <div class= "nav-getin">내가 참가한 팟</div>
+            </a>
+            <a href="{% url 'editprofile' %}">
+                <div class="nav-profileedit">회원 정보 수정</div>
+            </a>
             <a href="{% url 'logout' %}">
                 <div class="nav-profileedit">로그 아웃</div>
             </a>

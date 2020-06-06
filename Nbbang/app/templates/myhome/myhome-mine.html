@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="myhome.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myhome.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이홈</title>
@@ -11,7 +12,7 @@
     <div class="container">
         <dic class="header">
             <div id="header-icon">
-                <a href="home.html">
+                <a href="{% url 'myhome' %}">
                 <span class="material-icons">
                 keyboard_backspace
                 </span>

@@ -67,5 +67,18 @@ urlpatterns = [
     path('all/shopping', views.all_shopping, name='all_shopping'),
     path('all/others', views.all_others, name='all_others'),
     
-    path('myhome', views.myhome, name="myhome")
+    #mine
+    path('myhome/mine', views.mine, name='mine'),
+    path('myhome/getin', views.getin, name='getin'),
+    path('myhome/editprofile', views.editprofile, name='editprofile'),
+    path('myhome/delete/user', views.delete_user, name='delete_user'),
+    
+    #마감
+    path('magam/food/<int:food_pk>', views.magam_food, name='magam_food'),
+    path('magam/franchise/<int:franchise_pk>', views.magam_franchise, name='magam_franchise'),
+    path('magam/ott/<int:ott_pk>', views.magam_ott, name='magam_ott'),
+    path('magam/shopping/<int:shopping_pk>', views.magam_shopping, name='magam_shopping'),
+    path('magam/others/<int:others_pk>', views.magam_others, name='magam_others'),
+    
+    path('myhome', views.myhome, name="myhome"),
 ]

@@ -64,6 +64,7 @@ class shopping(models.Model):
 class ott(models.Model):
     author = models.ForeignKey(User, on_delete = models.CASCADE, related_name='ott_id', null=True )
     title = models.CharField(max_length= 100, help_text='최대 100자 내로 입력가능합니다.')
+    service = models.CharField(max_length = 20, null=True)
     people = models.CharField(max_length = 10)
     kakaoLink = models.CharField(max_length = 100)
     memo = models.TextField(null= True)

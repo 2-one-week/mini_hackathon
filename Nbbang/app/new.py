@@ -56,8 +56,9 @@ def create_ott(request):
     _new_ott = ott.objects.create(
         author = request.user,
         title = request.POST['title'],
+        service = request.POST['OTT-service'],
         people = request.POST['people'],
-        kakaoLink = request.POST['kakoLink'],
+        kakaoLink = request.POST['kakaoLink'],
         memo = request.POST['memo'],
         end = 0
     )
