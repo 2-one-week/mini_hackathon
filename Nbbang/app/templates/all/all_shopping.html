@@ -20,29 +20,14 @@
             </span>
         </a>
         </div>
-        <div id="header-title">{{category.title}}</div>
+        <div id="header-title">인터넷 쇼핑</div>
         <div id="header-empty"> </div>
     </header>
     <main>
-        <div class="select-box">
-            {% load static %}
-            <img id="select-more" src="{% static 'check.png' %}">
-            <select class="locations select-location" name="location">
-                <option selected>위치별로 정렬</option>
-                <option value="참살이길">참살이길</option>
-                <option value="정대후문">정대후문</option>
-                <option value="이공계">이공계</option>
-                <option value="안암오거리">안암오거리</option>
-                <option value="제기동">제기동</option>
-                <option value="고대사거리">고대사거리</option>
-                <option value="정문앞">정문앞</option>
-                <option value="법대후문">법대후문</option>
-            </select>
-        </div>
         <div class="post-table">
         {% for shopping in shoppings %}
             <table>
-                <div class="modal fade" id="{{food.pk}}" role="dialog"> 
+                <div class="modal fade" id="{{shopping.pk}}" role="dialog"> 
                     <div class="modal-dialog">
                         <div class="modal-content" id="detail-box">
                             <div class="modal-header" id="detail-top">
@@ -60,27 +45,38 @@
                 
                             <div class="modal-body" id="detail-main">
                                 <div class="row" id="tr">
-                                    <div class="col-xs-5" id="left"><p>사이트</p></div>
-                                    <div class="col-xs-7" id="right">쿠팡</div>
+                                    <div class="col-xs-5" id="left"><a href="{{shopping.siteLink}}">사이트로 이동하기</a><p></p></div>
+                                    <div class="col-xs-7" id="right"></div>
                                 </div>
                                 <div class="row" id="tr">
                                     <div class="col-xs-5" id="left"><p>필요금액</p></div>
-                                    <div class="col-xs-7" id="right">6,500원</div>
+                                    <div class="col-xs-7" id="right">{{shopping.left}}</div>
                                 </div>
                                 <div class="row" id="tr">
                                     <div class="col-xs-5" id="left"><p>마감기한</p></div>
-                                    <div class="col-xs-7" id="right">6/6 13:00</div>
+                                    <div class="col-xs-7" id="right">{{shopping.deadline1}} {{shopping.deadline2}}</div>
                                 </div>
                                 <div class="row" id="tr">
-                                    <div class="col-xs-12" id="h2">강호랑님, 지금 팟에 참여하시면<br> <span id="orange">2,000원</span>을 아낄 수 있어요!</div>
+                                    <div class="col-xs-12" id="h2">{{user.profile.nickname}}님, 지금 팟에 참여하시면<br> <span id="orange">{{shopping.left}}</span>을 아낄 수 있어요!</div>
                                 </div>
+                                {% if user.is_authenticated and shopping.author.pk == user.pk %}
+                                <div class="row" id="tr">
+                                    <div class="col-xs-6" id="h2">
+                                        <a href="{% url 'edit_shopping' shopping.pk %}">
+                                            <button id="edit">수정하기</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6" id="h2">
+                                        <a href="{% url 'magam_shopping' shopping.pk %}">
+                                            <button id="magam">마감하기</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% else %}
                                 <div class="row" id="tr">
                                     <div class="col-xs-12" id="h2"><button id="join">참가하기</button></div>
                                 </div>
-                                <div class="row" id="tr">
-                                    <div class="col-xs-6" id="h2"><button id="edit">수정하기</button></div>
-                                    <div class="col-xs-6" id="h2"><button id="magam">마감하기</button></div>
-                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -89,7 +85,7 @@
                     <td>{{shopping.location}}</td>
                 </tr>
                 <tr id="tr-2"> 
-                    <td>{{shopping.title}}</td>
+                    <td><button type="button"  data-toggle="modal" data-target="#{{shopping.pk}}" style="border: none; background-color: white; display:flex; justify-contents:center; align-items:center;">{{shopping.title}}</button></td>
                 </tr>
                 <tr id="tr-3"> 
                     <td id="td-time">{{shopping.time}}</td>

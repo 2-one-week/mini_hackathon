@@ -13,7 +13,7 @@
 <body>
     <div class="detail-box">
         <div class="detail-top">
-            <a href="{% url 'all_food' %}">
+            <a href="{% url 'all_franchise' %}">
                 <div class="exit">
                     <span class="material-icons"> clear </span>
                 </div>
@@ -47,18 +47,26 @@
                     </tr>
                 </table>
             </div>
-
             {% if user.is_authenticated and franchise.author.pk == user.pk %}
             <div class="for-uploader">
-                <button class="edit" href="" type="submit">수정하기</button>
-                <button class="magam" href="" type="submit">마감하기</button>
+                <a href="{% url 'edit_franchise' franchise.pk %}">
+                    <button class="edit" href="" type="submit">수정하기</button>
+                </a>
+                <a href="{% url 'magam_franchise' franchise.pk %}">
+                    <button class="magam" href="" type="submit">마감하기</button>
+                </a>
+                
             </div>
             {% else %}
 
-            <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">{{save_money}}</span>원을 아낄 수 있어요!</h2>
-
-            <button class="join" href="" type="submit">참가하기</button>
+            <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">할인행사로 돈</span>을 아낄 수 있어요!</h2>
+            
+            <a href="{% url 'getin_franchise' franchise.pk %}">
+                <button class="join" href="" type="submit">참가하기</button>
+            </a>
+            
             {% endif %}
+        
         </div>
     </div>
 </body>

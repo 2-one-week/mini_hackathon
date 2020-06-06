@@ -41,11 +41,41 @@
                     <div class="title">카테고리</div>
                 </div>
                     <div class="category-main">
-                    <div class="category-content">배달음식</div>
-                    <div class="category-content">OTT</div>
-                    <div class="category-content">할인행사</div>
-                    <div class="category-content">인터넷쇼핑</div>
-                    <div class="category-content">기타</div>
+                    <div class="category-content">
+                        <a href="{% url 'all_food' %}">
+                        <div class="category-content-1"></div>
+                            <p>배달음식</p>
+                        </a>
+                        
+                    </div>
+                    <div class="category-content">
+                        <a href="{% url 'all_ott' %}">
+                        <div class="category-content-2"></div>
+                        
+                            <p>OTT</p>
+                        </a>
+                    
+                    </div>
+                    <div class="category-content">
+                        <a href="{% url 'all_franchise' %}">
+                        <div class="category-content-3"></div>
+                        
+                            <p>할인행사</p>
+                        </a>
+                    </div>
+                    <div class="category-content">
+                        <a href="{% url 'all_shopping' %}">
+                        <div class="category-content-4"></div>
+                            <p>인터넷쇼핑</p>
+                        </a>
+    
+                    </div>
+                    <div class="category-content">
+                        <a href="{% url 'all_others' %}">
+                        <div class="category-content-5"></div>
+                            <p>기타</p>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="locate-recognition">
@@ -194,7 +224,7 @@
                             <td class="thumbnail-bar-category">
                                 <p>{{other.location}}</p>
                             </td>
-                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_food' food.pk %}">{{other.title}}</a></p></td>
+                            <td class="thumbnail-bar-title"><p><a href="{% url 'detail_others' other.pk %}">{{other.title}}</a></p></td>
                             <td class="thumbnail-bar-deadline">~{{other.deadline1}} {{other.deadline2}} </td>
                         </tr>
                         {% endif %}

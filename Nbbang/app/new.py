@@ -29,7 +29,7 @@ def create_food(request):
 def create_franchise(request):
     month = str(request.POST['month'])
     day = str(request.POST['day'])
-    shop_name = request.POST['shop']
+    shop_name = request.POST['shop_name'] + request.POST['shop_detail']
     _new_franchise = franchise.objects.create(
         author = request.user,
         location = request.user.profile.location,
@@ -81,7 +81,7 @@ def create_others(request):
         deadline1 = month +'/'+day,
         deadline2 = request.POST['time'],
         siteLink = request.POST['siteLink'],
-        kakaoLink = request.POST['kakoLink'],
+        kakaoLink = request.POST['kakaoLink'],
         memo = request.POST['memo'],
         end = 0
     )

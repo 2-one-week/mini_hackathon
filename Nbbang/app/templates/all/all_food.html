@@ -24,21 +24,6 @@
         <div id="header-empty"> </div>
     </header>
     <main>
-        <div class="select-box">
-        {% load static %}
-        <img id="select-more" src="{% static 'check.png' %}">
-        <select class="locations select-location" name="location">
-            <option selected>위치별로 정렬</option>
-            <option value="참살이길">참살이길</option>
-            <option value="정대후문">정대후문</option>
-            <option value="이공계">이공계</option>
-            <option value="안암오거리">안암오거리</option>
-            <option value="제기동">제기동</option>
-            <option value="고대사거리">고대사거리</option>
-            <option value="정문앞">정문앞</option>
-            <option value="법대후문">법대후문</option>
-        </select>
-        </div>
         <div class="post-table">
         
         {% for food in foods %}

@@ -228,8 +228,8 @@ def detail_ott(request, ott_pk):
 
 @login_required(login_url= '/registration/login')
 def detail_shopping(request, shopping_pk):
-    shopping_pk = shopping.objects.get(pk = shopping_pk)
-    return render(request, 'detail/detail_shopping.html',{'shopping':shopping_pk})
+    current_shopping = shopping.objects.get(pk = shopping_pk)
+    return render(request, 'detail/detail_shopping.html',{'shopping':current_shopping})
 
 @login_required(login_url= '/registration/login')
 def detail_others(request, others_pk):
@@ -266,10 +266,25 @@ def all_others(request):
 # -----------------------my_profile----------------------
 @login_required(login_url= '/registration/login')
 def myhome(request):
+    
     return render(request, 'myhome/myhome.html')
 
 def mine(request):
-    return render(request, 'myhome/myhome-mine.html')
+    all_foods = food.objects.all().order_by('deadline1', 'deadline2')
+    all_franchises = franchise.objects.all().order_by('deadline1', 'deadline2')
+    all_shoppings = shopping.objects.all().order_by('deadline1', 'deadline2')
+    all_otts = ott.objects.all()
+    all_otherss = others.objects.all().order_by('deadline1', 'deadline2')
+    
+    
+    return render(request, 'myhome/myhome-mine.html',
+                  {
+                   'all_foods' : all_foods,
+                   'all_franchises':all_franchises,
+                   'all_shoppings':all_shoppings,
+                   'all_otts':all_otts,
+                   'all_otherss':all_otherss
+                   })
 
 def getin(request):
     return render(request, 'myhome/myhome-getin.html')
@@ -324,3 +339,28 @@ def magam_others(request, others_pk):
         end = 1
     )
     return redirect('index')
+
+
+# getin
+def getin_food(request, food_pk):
+    getin_food = food.objects.filter(pk = food_pk)
+    return render(request, 'getin/getin_food.html',{'getin_food':getin_food})
+
+def getin_franchise(request, franchise_pk):
+    getin_franchise = franchise.objects.filter(pk = franchise_pk)
+    return render(request, 'getin/getin_franchise.html', {'getin_franchise':getin_franchise})
+
+
+def getin_ott(request, ott_pk):
+    getin_ott = ott.objects.filter(pk = ott_pk)
+    return render(request, 'getin/getin_ott.html',{'getin_ott':getin_ott})
+
+
+def getin_shopping(request, shopping_pk):
+    getin_shopping = shopping.objects.filter(pk = shopping_pk)
+    return render(request, 'getin/getin_shopping.html',{'getin_shopping':getin_shopping})
+
+
+def getin_others(request, others_pk):
+    getin_others = others.objects.filter(pk = others_pk)
+    return render(request, 'getin/login_required.html',{'getin_others':getin_others})

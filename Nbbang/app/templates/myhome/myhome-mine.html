@@ -22,35 +22,98 @@
             <div id="header-empty"> </div>
         </div>
     <div class="mine-contents">
+        {% for food in all_foods %}
+        {% if food.author.pk == user.pk %}
         <div class="mine-content">
             <table>
                 <tr>
-                    <td class="category">법대후문</td>
+                    <td class="category">배달 음식</td>
                 </tr>
                 <tr>
-                    <td class="title">왓챠 팟 구함</td>
+                    <td class="title">{{food.title}}</td>
                 </tr>
                 <tr>
-                    <td class="when">10분 전</td>
+                    <td class="when">{{food.deadline1}} {{food.deadline2}}</td>
                 </tr>
             </table>
-            <button class="lets_evaluate">신뢰도<br>평가하기</button>
         </div>
+        {% endif %}
+        
+        {% endfor %}
+        {% for franchise in all_franchises %}
+        {% if franchise.author.pk == user.pk %}
+        <div class="mine-content">
+            <table>
+                <tr>
+                    <td class="category">프랜차이즈</td>
+                </tr>
+                <tr>
+                    <td class="title">{{franchise.title}}</td>
+                </tr>
+                <tr>
+                    <td class="when">{{franchise.deadline1}} {{franchise.deadline2}}</td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+        
+        {% endfor %}
+        {% for shopping in all_shoppings %}
+        {% if shopping.author.pk == user.pk %}
+        <div class="mine-content">
+            <table>
+                <tr>
+                    <td class="category">인터넷 쇼핑</td>
+                </tr>
+                <tr>
+                    <td class="title">{{shopping.title}}</td>
+                </tr>
+                <tr>
+                    <td class="when">{{shopping.deadline1}} {{shopping.deadline2}}</td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+        
 
+        {% endfor %}
+        {% for ott in all_otts %}
+        {% if ott.author.pk == user.pk %}
         <div class="mine-content">
             <table>
                 <tr>
-                    <td class="category">법대후문</td>
+                    <td class="category">OTT 서비스</td>
                 </tr>
                 <tr>
-                    <td class="title">왓챠 팟 구함</td>
+                    <td class="title">{{}}</td>
                 </tr>
                 <tr>
-                    <td class="when">10분 전</td>
+                    <td class="when">{{ott.deadline1}} {{ott.deadline2}}</td>
                 </tr>
             </table>
-            <button class="lets_evaluate">신뢰도<br>평가하기</button>
         </div>
+        {% endif %}
+        
+        {% endfor %}
+        {% for others in all_otherss %}
+        {% if others.author.pk == user.pk %}
+        <div class="mine-content">
+            <table>
+                <tr>
+                    <td class="category">기타</td>
+                </tr>
+                <tr>
+                    <td class="title">{{others.title}}</td>
+                </tr>
+                <tr>
+                    <td class="when"></td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+       
+        {% endfor %}
+        
     </div>
 </body>
 </html>

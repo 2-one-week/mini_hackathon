@@ -81,4 +81,10 @@ urlpatterns = [
     path('magam/others/<int:others_pk>', views.magam_others, name='magam_others'),
     
     path('myhome', views.myhome, name="myhome"),
+    
+    path('getin/food/<int:food_pk>', views.getin_food, name='getin_food'),
+    path('getin/franchise/<int:franchise_pk>', views.getin_franchise, name='getin_franchise'),
+    path('getin/ott/<int:ott_pk>', views.getin_ott, name='getin_ott'),
+    path('getin/shopping/<int:shopping_pk>', views.getin_shopping, name='getin_shopping'),
+    path('getin/others/<int:others_pk>', views.getin_others, name='getin_others'),
 ]

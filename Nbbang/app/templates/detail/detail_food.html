@@ -66,9 +66,12 @@
             </div>
             {% else %}
 
-            <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">{{save_money}}</span>원을 아낄 수 있어요!</h2>
+            <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">{{food.baedalTip}}</span>원을 아낄 수 있어요!</h2>
             
-            <button class="join" href="" type="submit">참가하기</button>
+            <a href="{% url 'getin_food' food.pk%}">
+                <button class="join" href="" type="submit">참가하기</button>
+            </a>
+            
             {% endif %}
             
         </div>

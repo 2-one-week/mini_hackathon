@@ -87,10 +87,11 @@
             <button type="submit">수정하기</button>
             
         </form>
-        <a href="{% url 'delete_shopping' shopping.pk %}">
-            <button type="button">삭제하기</button>
-        </a>
-        
+        <div class="button-button">
+            <a href="{% url 'delete_shopping' shopping.pk %}">
+                <button type="button">삭제하기</button>
+            </a>
+        </div>
     </div>
     
 

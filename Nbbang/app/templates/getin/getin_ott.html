@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+</head>
+<body>
+    <div class="detail-box">
+        <div class="detail-top">
+            <div class="exit">
+                <a href="{% url 'index' %}">
+                    <span class="material-icons"> clear </span>
+                </a>
+            </div>
+            <div class="category">
+                <p>OTT 서비스</p>
+            </div>s
+            <div class="title">
+                <h1>{{getin_ott.title}}</h1>
+            </div>
+        </div>
+        <div class="detail-main">
+            <!--여기서부터 일반 유저-->
+            <a href="{{getin_ott.kakaoLink}}"
+            <button class="openkakao" href="">오픈카톡방 들어가기</button>
+            <a href="{% url 'index' %}">
+                <button class="get-in" type="button">참가확정</button>
+            </a>
+        </div>
+    </div>
+</body>

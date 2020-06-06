@@ -24,25 +24,10 @@
         <div id="header-empty"> </div>
     </header>
     <main>
-        <div class="select-box">
-            {% load static %}
-            <img id="select-more" src="{% static 'check.png' %}">
-            <select class="locations select-location" name="location">
-                <option selected>위치별로 정렬</option>
-                <option value="참살이길">참살이길</option>
-                <option value="정대후문">정대후문</option>
-                <option value="이공계">이공계</option>
-                <option value="안암오거리">안암오거리</option>
-                <option value="제기동">제기동</option>
-                <option value="고대사거리">고대사거리</option>
-                <option value="정문앞">정문앞</option>
-                <option value="법대후문">법대후문</option>
-            </select>
-        </div>
         <div class="post-table">
         {% for other in others %}
             <table>
-                <div class="modal fade" id="{{food.pk}}" role="dialog"> 
+                <div class="modal fade" id="{{others.pk}}" role="dialog"> 
                     <div class="modal-dialog">
                         <div class="modal-content" id="detail-box">
                             <div class="modal-header" id="detail-top">
@@ -61,33 +46,50 @@
                             <div class="modal-body" id="detail-main">
                                 <div class="row" id="tr">
                                     <div class="col-xs-5" id="left"><p>제품링크</p></div>
-                                    <div class="col-xs-7" id="right"><button>제품 보러가기</button></div>
+                                    <div class="col-xs-7" id="right">
+                                        <a href="{{others.siteLink}}">
+                                            <button>제품 보러가기</button>
+                                        </a>
+                                        </div>
                                 </div>
                                 <div class="row" id="tr">
-                                    <div class="col-xs-12" id="h2">미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다..</div>
+                                    <div class="col-xs-12" id="h2">
+                                        {{others.memo}}
+                                    </div>
                                 </div>
                                 <div class="row" id="tr">
-                                    <div class="col-xs-12" id="h2">강호랑님, 지금 팟에 참여하시면<br> <span id="orange">2,000원</span>을 아낄 수 있어요!</div>
+                                    <div class="col-xs-12" id="h2">{{user.profile.nickname}}님, 지금 팟에 참여하시면<br> 배송비 <span id="orange">1250원</span>을 아낄 수 있어요!</div>
                                 </div>
+                                {% if user.is_authenticated and others.author.pk == user.pk %}
+                                <div class="row" id="tr">
+                                    <div class="col-xs-6" id="h2">
+                                        <a href="{% url 'edit_others' others.pk %}">
+                                            <button id="edit">수정하기</button>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6" id="h2">
+                                        <a href="{% url 'magam_others' others.pk %}">
+                                            <button id="magam">마감하기</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% else %}
                                 <div class="row" id="tr">
                                     <div class="col-xs-12" id="h2"><button id="join">참가하기</button></div>
                                 </div>
-                                <div class="row" id="tr">
-                                    <div class="col-xs-6" id="h2"><button id="edit">수정하기</button></div>
-                                    <div class="col-xs-6" id="h2"><button id="magam">마감하기</button></div>
-                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
                 <tr id="tr-1"> 
-                    <td>{{food.location}}</td>
+                    <td>{{others.location}}</td>
                 </tr>
                 <tr id="tr-2"> 
-                    <td>{{food.title}}</td>
+                    <td><button type="button"  data-toggle="modal" data-target="#{{others.pk}}" style="border: none; background-color: white; display:flex; justify-contents:center; align-items:center;">{{others.title}}</button></td>
                 </tr>
                 <tr id="tr-3"> 
-                    <td id="td-time">{{food.time}}</td>
+                    <td id="td-time">{{others.deadline2}}</td>
                     <td id="td-deadline"> <strong>마감</strong>{{food.deadline1}}</td>
                 </tr>
             </table>

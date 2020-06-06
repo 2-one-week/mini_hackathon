@@ -13,7 +13,7 @@
 <body>
     <div class="detail-box">
         <div class="detail-top">
-            <a href="{% url 'all_food' %}">
+            <a href="{% url 'all_ott' %}">
                 <div class="exit">
                     <span class="material-icons"> clear </span>
                 </div>
@@ -22,7 +22,7 @@
                 <p>OTT</p>
             </div>
             <div class="title">
-                <h1>왓차 팟 구함</h1>
+                <h1>{{ott.title}}</h1>
             </div>
         </div>
         <div class="detail-main">
@@ -30,26 +30,34 @@
                 <table>
                     <th></th>
                     <tr><!--첫번째 줄 시작-->
-                        <td class="left"><div>가</div><div>게</div></td>
-                        <td class="right">왓챠플레이</td>
+                        <td class="left"><div>종</div><div>류</div></td>
+                        <td class="right">{{ott.service}}</td>
                     </tr>
                     <tr><!--두번째 줄 시작-->
-                        <td class="left"><div>정</div><div>원</div></td>
-                        <td class="right">1/4</td>
+                        <td class="left"><div>남은</div><div>정원</div></td>
+                        <td class="right">{{ott.people}}</td>
                     </tr>
                 </table>
             </div>
 
             {% if user.is_authenticated and ott.author.pk == user.pk %}
             <div class="for-uploader">
-                <button class="edit" href="" type="submit">수정하기</button>
-                <button class="magam" href="" type="submit">마감하기</button>
+                <a href="{% url 'edit_ott' ott.pk %}">
+                    <button class="edit" href="" type="submit">수정하기</button>
+                </a>
+                <a href="{% url 'magam_ott' ott.pk %}">
+                    <button class="magam" href="" type="submit">마감하기</button>
+                </a>
+                
             </div>
             {% else %}
 
-            <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">{{save_money}}</span>원을 아낄 수 있어요!</h2>
-
-            <button class="join" href="" type="submit">참가하기</button>
+            <h2>{{user.profile.nickname}}님, 지금 팟에 참여하시면<br><span class="orange">할인행사로 돈</span>을 아낄 수 있어요!</h2>
+            
+            <a href="{% url 'getin_ott' ott.pk %}">
+                <button class="join" href="" type="submit">참가하기</button>
+            </a>
+            
             {% endif %}
         </div>
     </div>
